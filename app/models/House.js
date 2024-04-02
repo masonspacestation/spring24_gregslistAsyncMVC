@@ -37,7 +37,7 @@ export class House {
       </p>
       <div class="d-flex justify-content-between">
       <span class="text-start w-auto px-3 fs-4 fw-bold">$${this.price}</span>
-      <span onClick="app.HousesController.deleteHouse(${this.id})" role="button" class="text-end fs-3 w-auto px-3"><i class="text-danger mdi mdi-delete-forever"></i></span>
+      ${this.deleteButton}
     </div>
     </div>
     </div>
@@ -46,5 +46,15 @@ export class House {
   }
 
 
+  get deleteButton() {
+    if (this.creatorId == AppState.account?.id) {
+      return `
+  
+
+      <button onclick="app.HousesController.deleteHouse('${this.id}')" class="btn text-end fs-3 w-auto px-3"><i class="text-danger mdi mdi-delete-forever"></i></button>
+      `
+    }
+    return ''
+  }
 
 }

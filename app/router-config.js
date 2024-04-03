@@ -4,6 +4,7 @@ import { HomeController } from "./controllers/HomeController.js";
 import { AuthGuard } from "./services/AuthService.js";
 import { Router } from "./utils/Router.js";
 import { HousesController } from "./controllers/HousesController.js";
+import { JobsController } from "./controllers/JobsController.js";
 
 
 export const router = new Router([
@@ -32,6 +33,11 @@ export const router = new Router([
     path: '#/houses',
     controllers: [HousesController],
     view: 'app/views/HousesView.html'
+  },
+  {
+    path: '#/jobs',
+    controllers: [JobsController],
+    view: 'app/views/JobsView.html'
   },
   {
     path: '#/account',

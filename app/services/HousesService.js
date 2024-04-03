@@ -3,11 +3,13 @@ import { api } from "./AxiosService.js";
 import { House } from "../models/House.js";
 
 class HousesService {
-  async deleteHouse(houseId) {
-    const response = await api.delete(`api/houses/${houseId}`)
-    console.log('api delete response ', response);
-    const indexToDelete = AppState.houses.findIndex(house => house.id == houseId)
-    AppState.houses.splice(indexToDelete, 1)
+
+
+  async getHouses() {
+    const response = await api.get('api/houses')
+    console.log('🏡 🪓', response);
+    const houses = response.data.map(house => new House(house))
+    AppState.houses = houses
   }
 
 
@@ -18,16 +20,20 @@ class HousesService {
     const house = new House(response.data)
     AppState.houses.push(house)
   }
-  // 
 
-  async getHouses() {
-    const response = await api.get('api/houses')
-    console.log('🏡 🪓', response);
-    const houses = response.data.map(house => new House(house))
-    AppState.houses = houses
+
+  async deleteHouse(houseId) {
+    const response = await api.delete(`api/houses/${houseId}`)
+    console.log('api delete response ', response);
+    const indexToDelete = AppState.houses.findIndex(house => house.id == houseId)
+    AppState.houses.splice(indexToDelete, 1)
   }
 
 
+
+  // updateHouse(houseId) {
+  //   throw new Error("Method not implemented.");
+  // }
 
   // connectionTest(test) {
   //   console.log('service connection test', test);

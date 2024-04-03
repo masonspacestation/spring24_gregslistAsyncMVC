@@ -49,6 +49,33 @@ export class HousesController {
   }
 
 
+  // async updateHouse(houseId) {
+  //   console.log('ready to update a house');
+  //   try {
+  //     const result = await Pop.confirm('Are you sure you want to edit this listing?')
+  //     if (result == false) return
+  //     await housesService.updateHouse(houseId)
+  //   } catch (error) {
+  //     console.error('🐡 error updating house', error)
+  //     Pop.toast("Sorry, couldn't update this listing", "error")
+  //   }
+
+
+
+  //   try {
+  //     event.preventDefault()
+  //     console.log('preparing to update house');
+  //     const form = event.target
+  //     const houseData = getFormData(form)
+  //     console.log(houseData);
+  //     await housesService.addHouse(houseData)
+  //   } catch (error) {
+  //     console.error('🛌 🚽 🙅 ', error)
+  //     Pop.toast("Couldn't list your house ", 'error')
+  //   }
+  // }
+
+
   showHouseForm() {
     const account = AppState.account
     if (account) {

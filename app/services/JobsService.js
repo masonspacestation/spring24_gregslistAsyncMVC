@@ -5,11 +5,17 @@ import { AppState } from "../AppState.js";
 
 
 class JobsService {
+  async addJob(jobData) {
+    console.log('job data going to work');
+    const response = await api.post('api/jobs', jobData)
+    const job = new Job(response.data)
+    AppState.jobs.push(job)
+  }
   async getJobs() {
     const response = await api.get('api/jobs')
     console.log('jobs response', response);
-    const jobs = response.data.map(job => new Job(job))
-    AppState.jobs = jobs
+    const job = response.data.map(job => new Job(job))
+    AppState.jobs = job
   }
 
 

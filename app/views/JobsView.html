@@ -1,4 +1,42 @@
 <section class="container">
+
+  <section class="row">
+    <form id="new-job-form" onsubmit="app.JobsController.addJob()" class="row bg-white p-3 rounded mt-2 mb-3">
+      <div class="col-12">
+        <h3>Post your Job!</h3>
+      </div>
+      <!-- title, company, hours, rate, description -->
+      <div class="mb-3 col-8 col-md-3">
+        <label for="company" class="">Your Company Name</label>
+        <input name="company" class="form-control" type="string" id="company" min="1" max="10" required>
+      </div>
+      <div class="mb-3 col-8 col-md-3">
+        <label for="jobTitle" class="">Job Title</label>
+        <input name="jobTitle" class="form-control" type="string" id="jobTitle" min="1" max="18" required>
+      </div>
+      <div class="mb-3 col-8 col-md-3">
+        <label for="rate" class="">Pay Rate</label>
+        <input name="rate" class="form-control" type="number" id="rate" min="15000" max="300000" required>
+      </div>
+      <div class="mb-3 col-8 col-md-3">
+        <label for="hours" class="">Hours</label>
+        <input name="hours" class="form-control" type="number" id="hours" min="1" max="60" required>
+      </div>
+
+
+      <div class="mb-3 col-12">
+        <label for="description">Description</label>
+        <textarea name="description" class="form-control" type="text" id="description" minlength="12" maxlength="64"
+          required></textarea>
+      </div>
+      <div class="d-flex justify-content-start mt-2"><button class="btn btn-primary px-4 p-2">Post Job <i
+            class="mdi mdi-plus-circle"></i></button></div>
+    </form>
+  </section>
+
+
+
+
   <section id="job-cards" class="row g-3">
     <!-- <div class="col-4 p-2">
       <div class="card rounded rounded-3">

@@ -1,6 +1,8 @@
 import { AppState } from "../AppState.js";
 import { Job } from "../models/Job.js";
 import { jobsService } from "../services/JobsService.js";
+import { getFormData } from "../utils/FormHandler.js";
+import { Pop } from "../utils/Pop.js";
 import { setHTML } from "../utils/Writer.js";
 
 
@@ -30,7 +32,18 @@ export class JobsController {
   }
 
 
-
+  async addJob() {
+    try {
+      event.preventDefault()
+      console.log('adding new job');
+      const form = event.target
+      const jobData = getFormData(form)
+      await jobsService.addJob(jobData)
+    } catch (error) {
+      console.log('new job creation error', error);
+      Pop.toast("Sorry, couldn't post your job")
+    }
+  }
 
 
 
